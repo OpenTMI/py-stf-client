@@ -31,7 +31,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install -r test-requirements.txt
-          pip install coveralls
+          pip install coveralls build
 
       - name: Run Unit tests
         run: |
@@ -45,9 +45,7 @@ jobs:
 
       - name: make packages
         if: github.event_name == 'release' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
-        run: |
-          python setup.py sdist
-          python setup.py bdist_wheel
+        run: python -m build
 
       - name: publish
         if: github.event_name == 'release' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
