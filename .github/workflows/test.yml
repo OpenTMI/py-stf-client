@@ -38,7 +38,7 @@ jobs:
           pytest --cov=stf_client
 
       - name: coveralls
-        if: github.event_name == 'release' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
         run: coveralls
 
       - name: make packages
