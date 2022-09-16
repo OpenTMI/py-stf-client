@@ -31,6 +31,7 @@ setup(
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Smartphone Test Farm", "stf", "devicefarm", "openstf"],
     python_requires=">=3.7",
+    setup_requires=["setuptools_scm"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
