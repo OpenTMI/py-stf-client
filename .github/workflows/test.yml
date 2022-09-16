@@ -31,12 +31,15 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install -r test-requirements.txt
+          pip install coveralls
 
       - name: Run Unit tests
-        if: matrix.os != 'ubuntu-latest'
         run: |
           pytest --cov=stf_client
 
+      - name: coveralls
+        if: github.event_name == 'release' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
+        run: coveralls
 
       - name: make packages
         if: github.event_name == 'release' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
